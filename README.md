@@ -2,8 +2,6 @@
 
 A Retrieval-Augmented Generation (RAG) system for video content — index videos, extract and embed frames/segments, and query them semantically through a chat-style interface.
 
-> This README is a starting template based on the project's folder structure. Update the sections marked with `<...>` to reflect your actual implementation details.
-
 ## ✨ Features
 
 - Video ingestion and frame/segment extraction
@@ -39,15 +37,14 @@ VideoRAG/
 - **Backend:** Python, [uv](https://docs.astral.sh/uv/) for dependency management
 - **Frontend:** Next.js, TypeScript
 - **Integration:** MCP (Model Context Protocol) server
-- **Model:** `<e.g. Qwen-VL / other model used for embeddings or reasoning>`
-- **Vector store / DB:** `<name of vector DB or index used>`
+- **Model:** Gemini Flash and Embeddings
+- **Vector store / DB:** Pixeltable
 
 ## 📋 Prerequisites
 
-- Python 3.10+ (see `backend/.python-version`)
+- Python 3.10+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
 - Node.js 18+ and npm
-- `<any external service, e.g. an API key for the model provider>`
 
 ## 🚀 Getting Started
 
@@ -106,17 +103,8 @@ uv run test_upload.py
 
 ## 📖 Usage
 
-`<Briefly describe the typical workflow — e.g. "Upload a video via the frontend, it gets processed and indexed by the backend, then you can query it in natural language through the chat interface.">`
-
-## 🗺️ Roadmap
-
-- [ ] `<planned feature 1>`
-- [ ] `<planned feature 2>`
+Upload a video via the frontend, it gets processed and indexed by the backend, then you can query it in natural language through the chat interface.
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
-
-## 📄 License
-
-`<Add your license here, e.g. MIT>`
