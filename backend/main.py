@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
     print("✅ Schema ready.")
     yield
 
-app = FastAPI(title="Video RAG API (Amazon Nova Clone)", lifespan=lifespan)
+app = FastAPI(title="Video RAG API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
