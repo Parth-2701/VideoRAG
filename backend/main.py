@@ -285,20 +285,20 @@ async def chat_with_agent(request: ChatRequest):
     ranked_frames.sort(key=lambda x: x["score"], reverse=True)
 
     # 3. Take Top 3 for the LLM
-    top_3_frames = ranked_frames[:3]
+    top_10_frames = ranked_frames[:10]
 
     context_str = ""
-    top_timestamp = top_3_frames[0]['timestamp_seconds'] if top_3_frames else None
+    top_timestamp = top_10_frames[0]['timestamp_seconds'] if top_10_frames else None
 
     # Filename from the Pixeltable file path (e.g. 'storage/videos/vid.mp4' -> 'vid.mp4')
-    source_video_name = top_3_frames[0]['source_filename'] if top_3_frames else "unknown.mp4"
+    source_video_name = top_10_frames[0]['source_filename'] if top_10_frames else "unknown.mp4"
 
-    for frame in top_3_frames:
+    for frame in top_10_frames:
         context_str += f"- At {frame['timestamp_seconds']:.1f} seconds: {frame['caption']}\n"
 
     # DEBUG: confirm what was actually retrieved before handing off to Gemini
     print("🔍 Top 3 retrieved frames:")
-    for frame in top_3_frames:
+    for frame in top_10_frames:
         print(f"    pos={frame['pos']} timestamp={frame['timestamp_seconds']:.1f}s caption={frame['caption'][:80]!r}")
 
     # 4. LLM Synthesis WITH MCP TOOL CALLING
