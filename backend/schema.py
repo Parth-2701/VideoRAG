@@ -159,7 +159,32 @@ GEMINI_CAPTION_MODELS = [
 #     "gemini-2.5-flash-lite",  # most generous free-tier limits of the bunch
 
 # ]
-GEMINI_PROMPT = "Describe this image in detail, focusing on concrete objects, actions, and setting."
+# GEMINI_PROMPT = "Describe this image in detail, focusing on concrete objects, actions, and setting."
+
+GEMINI_PROMPT = """
+You are generating descriptions for frames extracted from a continuous video.
+
+Treat this image as one moment in an ongoing sequence rather than as an isolated photograph. The video may belong to any domain, including educational content, lectures, tutorials, movies, animation, sports, gameplay, documentaries, news, surveillance, vlogs, advertisements, or presentations.
+
+Write a detailed factual description that captures everything useful for video retrieval and question answering.
+
+Include:
+- The overall scene or environment.
+- Every significant person, character, animal, vehicle, or object.
+- What each visible subject is doing.
+- Interactions between subjects or objects.
+- Relative positions (foreground/background, left/right/center).
+- Any visible motion or changes occurring in this moment.
+- Readable text, subtitles, labels, signs, or UI elements.
+- Visual attributes such as colors, clothing, appearance, lighting, weather, and time of day if evident.
+- Camera viewpoint if obvious (close-up, wide shot, aerial view, over-the-shoulder, etc.).
+
+Describe only what is directly observable in this frame.
+Do not infer identities, emotions, intentions, dialogue, or events that are not visually evident.
+Do not speculate about what happened before or after this frame.
+Write one coherent paragraph in natural language.
+"""
+
 
 _genai_client = genai.Client(api_key=api_key) if api_key else None
 
@@ -246,7 +271,7 @@ def setup_db():
     frames_view = pxt.create_view(
         'video_rag.frames',
         videos,
-        iterator=frame_iterator(video=videos.video, fps=0.5),
+        iterator=frame_iterator(video=videos.video, fps=1.0),
         if_exists='ignore'
     )
 

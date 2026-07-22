@@ -14,7 +14,7 @@ import pixeltable as pxt
 import os
 
 VIDEO_FILENAME = "test_bunny.mp4"  # change to match your uploaded filename
-FPS = 0.5  # must match schema.py's frame_iterator fps
+FPS = 1.0  # must match schema.py's frame_iterator fps
 
 frames = pxt.get_table('video_rag.frames')
 

@@ -253,7 +253,7 @@ async def chat_with_agent(request: ChatRequest):
     # view. schema.py samples at fps=0.5 (one frame every 2 real seconds),
     # so pos=3 is actually at real timestamp 3 / 0.5 = 6 seconds, not 3s.
     # Must keep this in sync with the fps value in schema.py's frame_iterator call.
-    FRAME_SAMPLE_FPS = 0.5
+    FRAME_SAMPLE_FPS = 1.0
 
     ranked_frames = []
     for i, row in enumerate(dense_results):
